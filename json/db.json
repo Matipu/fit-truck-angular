@@ -414,7 +414,7 @@
       },
       "per100g": true,
       "tags": [
-        "słodycze"
+        "mleczne"
       ]
     },
     {
@@ -684,6 +684,18 @@
       "tags": [
         "pszenne"
       ]
+    },
+    {
+      "id": "e9a4",
+      "name": "fasola z fuszki",
+      "per100g": true,
+      "nutrients": {
+        "carbo": 13,
+        "kcal": 99,
+        "fat": 0.6,
+        "fiber": 6,
+        "protein": 7.5
+      }
     }
   ],
   "recipes": [
@@ -740,23 +752,23 @@
       "ingredients": [
         {
           "id": 14,
-          "size": 30
+          "size": 90
         },
         {
           "id": 13,
-          "size": 800
+          "size": 700
         },
         {
           "id": 12,
-          "size": 355
+          "size": 385
         },
         {
           "id": 11,
-          "size": 157
+          "size": 200
         },
         {
           "id": 10,
-          "size": 250
+          "size": 300
         },
         {
           "id": 9,
@@ -777,7 +789,12 @@
         {
           "id": 5,
           "size": 12
+        },
+        {
+          "id": "e9a4",
+          "size": 255
         }
+
       ],
       "steps": [
         {
@@ -1207,5 +1224,25 @@
       "allDayDietsFirstPerson": [],
       "allDayDietsSecondPerson": []
     }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Mateusz",
+      "yearOfBirth": 1994,
+      "height": 195,
+      "weight": 123,
+      "PAL": 1.4,
+      "sex": "m"
+   },
+   {
+     "id": 2,
+     "name": "Alicja",
+     "yearOfBirth": 1996,
+     "height": 173,
+     "weight": 67,
+     "PAL": 1.4,
+     "sex": "w"
+   }
   ]
 }

@@ -9,8 +9,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { PrzepisyState } from './przepisy/state/przepisy.state';
 import { DietState } from './dieta/state/diet.state';
 import { RecipeState } from './przepis/state/recipe.state';
+import { UserState } from './user/state/user.state';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideHttpClient(), provideRouter(routes), provideStore([ProduktyState, PrzepisyState, DietState, RecipeState],
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideHttpClient(), provideRouter(routes), provideStore([ProduktyState, PrzepisyState, DietState, RecipeState, UserState],
 ), provideAnimationsAsync()]
 };

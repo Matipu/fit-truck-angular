@@ -1,11 +1,11 @@
 import { Selector } from "@ngxs/store";
 import { UserState, UserStateModel } from "./user.state";
-import { User } from "./user.model";
+import { UserModel } from "./user.model";
 
 
 export class UserSelector {
     @Selector([UserState])
-    static getUser(state: UserStateModel): User[] {
+    static getUser(state: UserStateModel): UserModel[] {
         return state.users;
     }
 }

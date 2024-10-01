@@ -3,41 +3,8 @@
     {{ recipe?.name }} 
   </h1>
   <div class="row">
-    <div class="column60">  <table class="nutrientsTable">
-      <tbody>
-        <tr>
-          <th>Wartości odżywcze</th>
-          <th>na danie</th>
-          <th>na porcje</th>
-        </tr>
-        <tr>
-          <td>Wartość energetyczna</td>
-          <td>{{ recipe.nutrients.kcal | number : "1.0-2" }}</td>
-          <td>{{ recipe.nutrients.kcal / recipe.quantity | number : "1.0-2" }}</td>
-        </tr>
-        <tr>
-          <td>Tłuszcz</td>
-          <td>{{ recipe.nutrients.fat | number : "1.0-2" }}</td>
-          <td>{{ recipe.nutrients.fat / recipe.quantity | number : "1.0-2" }}</td>
-        </tr>
-        <tr>
-          <td>Węglowodany</td>
-          <td>{{ recipe.nutrients.carbo | number : "1.0-2" }}</td>
-          <td>{{ recipe.nutrients.carbo / recipe.quantity | number : "1.0-2" }}</td>
-        </tr>
-        <tr>
-          <td>Błonnik</td>
-          <td>{{ recipe.nutrients.fiber | number : "1.0-2" }}</td>
-          <td>{{ recipe.nutrients.fiber / recipe.quantity | number : "1.0-2" }}</td>
-        </tr>
-        <tr>
-          <td>Białko</td>
-          <td>{{ recipe.nutrients.protein | number : "1.0-2" }}</td>
-          <td>{{ recipe.nutrients.protein / recipe.quantity | number : "1.0-2" }}</td>
-        </tr>
-      </tbody>
-    </table>
-      
+    <div class="column60">  
+      <app-nutrients-table [nutrients]="recipe.nutrients" [quantity]="recipe.quantity"></app-nutrients-table>
     <h2>Kroki:</h2>
     <li class="steps" *ngFor="let step of recipe?.steps">
       {{ step.desc }}

@@ -3,18 +3,18 @@ import { patch } from '@ngxs/store/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Produkt } from '../../produkty/state/produkty.model';
-import { User } from './user.model';
 import { LoadUsers, SaveUser } from './user.action';
+import { UserModel } from './user.model';
 
 export interface UserStateModel {
-  users: User[];
+  users: UserModel[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 @State<UserStateModel>({
-  name: 'diet',
+  name: 'user',
   defaults: {
     users: null,
   },
@@ -26,7 +26,7 @@ export class UserState {
   loadPrzepisy(ctx: StateContext<UserStateModel>): void {
 
     this.http
-    .get<User[]>('http://192.168.0.73:3000/user')
+    .get<UserModel[]>('http://192.168.0.73:3000/user')
     .subscribe((data) => {
       ctx.setState(
         patch({

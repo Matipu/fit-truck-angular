@@ -1,0 +1,7 @@
+<div class="steps" *ngFor="let user of users; let i=index">
+    Nazwa:{{user.name}}     
+    Wzrost:{{user.height}} 
+    Waga:{{user.weight}} 
+    Rok urodzenia:{{user.yearOfBirth}} 
+    Zapotrzebowanie: <app-nutrients-table [nutrients]="user.requiredNutrients"></app-nutrients-table>
+</div>

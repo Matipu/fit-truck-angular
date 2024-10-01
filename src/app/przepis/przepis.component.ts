@@ -16,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipeSelector } from './state/recipe.selector';
 import { LoadRecipe } from './state/recipe.action';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { NutrientsTableComponent } from "../nutrients-table/nutrients-table.component";
 
 export interface ProduktOpis {
   id: string;
@@ -30,7 +31,7 @@ export interface ProduktOpis {
 @Component({
   selector: 'app-przepis',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatInputModule, MatIconModule, MatButtonModule, DecimalPipe, MatDialogModule, MatFormFieldModule],
+  imports: [NutrientsTableComponent, CommonModule, FormsModule, MatInputModule, MatIconModule, MatButtonModule, DecimalPipe, MatDialogModule, MatFormFieldModule, NutrientsTableComponent],
   templateUrl: './przepis.component.html',
   styleUrl: './przepis.component.scss',
 })
@@ -53,8 +54,14 @@ export class PrzepisComponent implements OnInit {
     });
     
     this.produkty$.subscribe(((data) => {
+      if(data == null || data.length == 0) {
+        return;
+      }
       this.produkty = data;
       this.przepis$.subscribe(((data) => {
+        if(data == null) {
+          return;
+        }
         this.recipe = data;
         this.productsDescription = [];
         if (this.recipe && this.produkty) {

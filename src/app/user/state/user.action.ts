@@ -1,4 +1,5 @@
-import { User } from "./user.model";
+import { UserModel } from "./user.model";
+
 
 export const stateName = 'user';
 const prefix = '[' + stateName + ']';
@@ -10,7 +11,7 @@ export class LoadUsers {
 export class SaveUser {
     static readonly type = prefix + ' Save';
 
-    constructor(public user: User) {
+    constructor(public user: UserModel) {
         
     }
 }
