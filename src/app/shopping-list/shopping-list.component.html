@@ -1,0 +1,8 @@
+
+Lista składników:
+<div  *ngFor="let tagShoppingElement of tagShoppingElements">
+  <h3>{{tagShoppingElement.tagName}}</h3>
+  <li *ngFor="let product of tagShoppingElement.listElement">
+    {{ product.name }}  <span style="float: right;"> {{ product.size  | number: '1.0-2'}} {{ product.culinaryConversion}}</span>
+  </li>
+</div >

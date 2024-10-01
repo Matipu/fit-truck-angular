@@ -1,0 +1,43 @@
+<div class="column80">
+
+  <div class="steps" *ngFor="let diet of allDiets.allDayDietsFirstPerson; let i=index">
+    <div class="test" style="width: 100%;  height: 500px; ">
+      <div style="width: 50%; float: left; max-height: 500px; overflow-y: auto;">
+        <div style="padding: 10px">
+          <h1  style="float: left;">Dzień {{i+1}} Mateusz</h1>  <button mat-raised-button class="button" extended (click)="openDialog(diet)">
+            Dodaj przepis
+          </button>
+          <span style="float: left; padding-top: 15px; padding-left: 10px;">kcal: {{ diet.nutrients.kcal | number: '1.0-2' }} Węglowodany: {{ diet.nutrients.carbo|
+            number: '1.0-2' }}g<br> Białko: {{ diet.nutrients.protein| number: '1.0-2' }}g Tłuszcz: {{
+              diet.nutrients.fat| number: '1.0-2' }} g</span>
+          <app-diet-table [przepisy]="diet.recipes" (deleteRecipe)="deleteRecipe(diet, $event)"></app-diet-table>
+        </div>
+      </div>
+      <div style="width: 50%; float: left; max-height: 500px; overflow-y: auto;">
+        <div style="padding: 10px">
+          <h1 style="float: left;">Dzień {{i+1}} Alicja</h1>  
+          <button mat-raised-button class="button" extended (click)="openDialog(allDiets.allDayDietsSecondPerson[i])">
+            Dodaj przepis
+          </button>
+          <span style="float: left; padding-top: 15px; padding-left: 10px;">kcal: {{ allDiets.allDayDietsSecondPerson[i].nutrients.kcal | number: '1.0-2' }} Węglowodany: {{ allDiets.allDayDietsSecondPerson[i].nutrients.carbo|
+            number: '1.0-2' }}g<br> Białko: {{ allDiets.allDayDietsSecondPerson[i].nutrients.protein| number: '1.0-2' }}g Tłuszcz: {{
+              allDiets.allDayDietsSecondPerson[i].nutrients.fat| number: '1.0-2' }} g</span>
+          <app-diet-table [przepisy]="allDiets.allDayDietsSecondPerson[i].recipes" (deleteRecipe)="deleteRecipe(allDiets.allDayDietsSecondPerson[i], $event)"></app-diet-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="column20">
+  <div class="recipesToShoppingList" *ngFor="let recipe of recipeWithNumbersInDiet; let i=index">
+    {{recipe.recipe.name}} <span  style="float: right"> {{recipe.numbersInDiet}}</span> 
+  </div>
+  
+  <button mat-stroked-button style="background-color: #a00; color: white;" class="button" extended (click)="saveDiet()">
+    Zapisz diete
+  </button>
+  <div style="padding: 10px; border: 1px solid;">
+    <app-shopping-list [tagShoppingElements]="requiredProducts"></app-shopping-list>
+  </div>
+</div>

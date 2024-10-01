@@ -1,1 +1,81 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin : 0;
+}
+html, body { height: 100%; background-color: #222; color: #ddd;}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.button {
+    border-radius: 3px !important;
+    margin: 10px;
+}
+
+.mat-mdc-row:nth-child(odd) {
+  background-color: #222;
+  color: #ddd;
+}
+
+.mat-mdc-row:nth-child(even) {
+  background-color: #333;
+  color: #ddd;
+}
+
+.mat-mdc-row:hover{
+  background-color: #444 !important;
+  color: #ddd;
+}
+
+.mat-mdc-row:nth-child(odd) {
+  background-color: #222;
+  color: #ddd;
+}
+
+.mat-mdc-header-row:nth-child(odd) {
+  background-color: #333;
+  color: #ddd;
+}
+
+.cancelButton {
+    @extend .button;
+    color: #900 !important;
+}
+
+.confirmButton {
+    @extend .button;
+    color: #090 !important;
+}
+
+.column60 {
+  float: left;
+  width: 60%;
+}
+
+.column70 {
+  float: left;
+  width: 70%;
+}
+
+.column40 {
+  float: left;
+  width: 40%;
+}
+
+.column30 {
+  float: left;
+  width: 30%;
+}
+
+.column20 {
+  float: left;
+  width: 20%;
+}
+
+.column80 {
+  float: left;
+  width: 80%;
+}
+
+.column50 {
+  float: left;
+  width: 50%;
+}

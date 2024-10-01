@@ -1,0 +1,48 @@
+<form class="addNewProductForm" [formGroup]="options" (ngSubmit)="submitForm()">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Edytuj składnik ({{this.product.id}}) </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <input formControlName="name" matInput placeholder="Nazwa" required>
+          </mat-form-field>
+        </div>
+      <div class="row">
+        <mat-checkbox formControlName="per100g" class="example-margin">Czy produkt liczony w sztukach?</mat-checkbox>
+      </div> 
+            <p>Składniki odżywcze na 100g lub na sztukę:</p>
+            <div class="col-md-6">
+             <mat-form-field  style="padding: 5px;">
+                <input  type="number" matInput formControlName="kcal"  placeholder="Ilość kalorii" required>
+              </mat-form-field>
+            </div>
+              <mat-form-field style="padding: 5px;">
+                <input  type="number" formControlName="fat" matInput placeholder="Tłuszcz" required>
+              </mat-form-field>
+              <mat-form-field style="padding: 5px;">
+                <input type="number" formControlName="carbo" matInput placeholder="Węglowodany" required>
+              </mat-form-field>
+              <mat-form-field  style="padding: 5px;">
+                <input type="number" formControlName="fiber" matInput placeholder="Błonnik" required>
+              </mat-form-field >
+              <mat-form-field  style="padding: 5px;">
+                <input type="number" formControlName="protein" matInput placeholder="Białko" required>
+              </mat-form-field>
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+       <button mat-raised-button class="confirmButton" type="submit" [disabled]="!options.valid"[mat-dialog-close]="true">
+        Save
+      </button>
+      <button mat-raised-button class="cancelButton" [mat-dialog-close]="true">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

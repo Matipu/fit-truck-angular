@@ -1,0 +1,83 @@
+<button
+  mat-raised-button
+  class="button"
+  extended
+  (click)="addProductOpenDialog()"
+>
+  Dodaj składnik
+</button>
+
+<table mat-table [dataSource]="produkty$ || []" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nazwa</th>
+    <td class="editableTableCell" mat-cell *matCellDef="let element">
+      {{ element.name }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="kcal">
+    <th mat-header-cell *matHeaderCellDef>kcal</th>
+    <td class="editableTableCell" mat-cell *matCellDef="let element">
+      {{ element.nutrients.kcal }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="carbo">
+    <th mat-header-cell *matHeaderCellDef>Węglowodany</th>
+    <td class="editableTableCell" mat-cell *matCellDef="let element">
+      {{ element.nutrients.carbo }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="fat">
+    <th mat-header-cell *matHeaderCellDef>Tłuszcz</th>
+    <td class="editableTableCell" mat-cell *matCellDef="let element">
+      {{ element.nutrients.fat }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="fiber">
+    <th mat-header-cell *matHeaderCellDef>Błonnik</th>
+    <td class="editableTableCell" mat-cell *matCellDef="let element">
+      {{ element.nutrients.fiber }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="protein">
+    <th mat-header-cell *matHeaderCellDef>Białko</th>
+    <td class="editableTableCell" mat-cell *matCellDef="let element">
+      {{ element.nutrients.protein }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="per100g">
+    <th mat-header-cell *matHeaderCellDef>Czy na 100g?</th>
+    <td mat-cell *matCellDef="let element">{{ element.per100g }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <button
+        mat-icon-button
+        class="material-icons app-toolbar-menu save-button"
+        matTooltip="Edit"
+        color="primary"
+        (click)="editProductOpenDialog(element)"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        class="material-icons app-toolbar-menu delete-button"
+        matTooltip="Delete"
+        color="warn"
+        (click)="deleteProduct(element)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

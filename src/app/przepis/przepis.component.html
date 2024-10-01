@@ -1,0 +1,73 @@
+<div class="recipe">
+  <h1>
+    {{ recipe?.name }} 
+  </h1>
+  <div class="row">
+    <div class="column60">  <table class="nutrientsTable">
+      <tbody>
+        <tr>
+          <th>Wartości odżywcze</th>
+          <th>na danie</th>
+          <th>na porcje</th>
+        </tr>
+        <tr>
+          <td>Wartość energetyczna</td>
+          <td>{{ recipe.nutrients.kcal | number : "1.0-2" }}</td>
+          <td>{{ recipe.nutrients.kcal / recipe.quantity | number : "1.0-2" }}</td>
+        </tr>
+        <tr>
+          <td>Tłuszcz</td>
+          <td>{{ recipe.nutrients.fat | number : "1.0-2" }}</td>
+          <td>{{ recipe.nutrients.fat / recipe.quantity | number : "1.0-2" }}</td>
+        </tr>
+        <tr>
+          <td>Węglowodany</td>
+          <td>{{ recipe.nutrients.carbo | number : "1.0-2" }}</td>
+          <td>{{ recipe.nutrients.carbo / recipe.quantity | number : "1.0-2" }}</td>
+        </tr>
+        <tr>
+          <td>Błonnik</td>
+          <td>{{ recipe.nutrients.fiber | number : "1.0-2" }}</td>
+          <td>{{ recipe.nutrients.fiber / recipe.quantity | number : "1.0-2" }}</td>
+        </tr>
+        <tr>
+          <td>Białko</td>
+          <td>{{ recipe.nutrients.protein | number : "1.0-2" }}</td>
+          <td>{{ recipe.nutrients.protein / recipe.quantity | number : "1.0-2" }}</td>
+        </tr>
+      </tbody>
+    </table>
+      
+    <h2>Kroki:</h2>
+    <li class="steps" *ngFor="let step of recipe?.steps">
+      {{ step.desc }}
+    </li>
+  </div>
+    <div class="column40">  
+      <h2>Składniki:</h2>
+      <li *ngFor="let productDescription of productsDescription" style="padding: 8px; width: 100%; outline-width: 1">
+        <span class="productName">{{ productDescription.name + " " }}</span>
+        <span class="productSize">
+          <span *ngIf="!productDescription.inEditMode"> {{ productDescription.size }} </span>
+          <span><mat-form-field style="max-width: 60px !important;" class="editableTextInput" *ngIf="productDescription.inEditMode" >
+            <input matInput placeholder="size" [ngModel]="productDescription.size"
+              (ngModelChange)="changeProductSize($event, productDescription)" />
+          </mat-form-field></span>
+          <span *ngIf="productDescription.per100g">g</span>
+          <span *ngIf="!productDescription.per100g">szt</span>
+          <mat-icon *ngIf="!productDescription.inEditMode" aria-hidden="false" aria-label="Edit" fontIcon="edit" (click)="openEditInput(productDescription)"></mat-icon>
+          <mat-icon *ngIf="productDescription.inEditMode" aria-hidden="false" aria-label="Edit" fontIcon="check" (click)="openEditInput(productDescription)"></mat-icon>
+        </span>
+        {{ productDescription.nutrients.kcal * productDescription.multiplier | number : "1.0-2" }} kcal
+      </li>
+    
+      <button mat-raised-button extended (click)="openDialogAddProduct()" style="border-radius: 3px !important">
+        Dodaj skladnik
+      </button>
+</div>
+  </div>
+
+
+
+
+</div>

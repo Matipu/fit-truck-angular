@@ -1,0 +1,48 @@
+.recipe { 
+    padding: 20px;
+}
+
+
+.productSize{
+    width: 15%;
+
+    display:inline-block;
+}
+
+.productName{
+    width: 60%;
+    display:inline-block;
+}
+
+.nutrientsTable {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+.nutrientsTable th{
+    border: 1px solid;
+    padding: 3px;
+}
+
+
+.nutrientsTable td{
+    border: 1px solid;
+    padding: 3px;
+}
+
+
+  ::ng-deep .editableTextInput  .mat-mdc-text-field-wrapper {
+    max-height: 30px;
+    display: flex !important;
+    background-color: white !important;
+    padding: 3px !important;
+  }
+  
+  ::ng-deep .editableTextInput .mat-mdc-form-field-infix {
+    padding: 3px !important;
+  }
+  .steps {
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 7px;
+  }

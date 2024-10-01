@@ -1,0 +1,45 @@
+<table
+  mat-table
+  [dataSource]="recipesRows || []"
+  multiTemplateDataRows
+  class="mat-elevation-z8"
+>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nazwa</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef>Ilość</th>
+    <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="kcal">
+    <th mat-header-cell *matHeaderCellDef>kcal</th>
+    <td mat-cell *matCellDef="let element">{{ element.nutrients.kcal/element.quantity | number: '1.0-2'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="carbo">
+    <th mat-header-cell *matHeaderCellDef>Węglowodany</th>
+    <td mat-cell *matCellDef="let element">{{ element.nutrients.carbo/element.quantity| number: '1.0-2'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="fat">
+    <th mat-header-cell *matHeaderCellDef>Tłuszcz</th>
+    <td mat-cell *matCellDef="let element">{{ element.nutrients.fat/element.quantity | number: '1.0-2'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="fiber">
+    <th mat-header-cell *matHeaderCellDef>Błonnik</th>
+    <td mat-cell *matCellDef="let element">{{ element.nutrients.fiber/element.quantity | number: '1.0-2'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="protein">
+    <th mat-header-cell *matHeaderCellDef>Białko</th>
+    <td mat-cell *matCellDef="let element">{{  element.nutrients.protein/element.quantity | number: '1.0-2' }}</td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let row">
+      <a mat-icon-button  (click)="this.deleteRecipe.emit(row)">
+        <mat-icon color="warn">delete</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="dietPrzepisyDisplayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: dietPrzepisyDisplayedColumns"></tr>
+</table>
